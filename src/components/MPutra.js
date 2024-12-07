@@ -39,24 +39,28 @@ const Product = () => {
     );
   };
 
+  /*
+
+
+1. Nowy formularz
+2. Po kliknięciu 'modyfikuj' uzupełnij formularz danymi.
+3. Modyfikacja 
+4. Zapisz zmiany
+
+*/
+
   const handleEditProduct = (e) => {
     e.preventDefault();
     const nazwa = prod[e.target.value][0];
     const nowaNazwa = prompt("Podaj nową nazwę produktu: ");
-    if (nazwa !== nowaNazwa) {
-      console.log(e.target.value);
-
+    if (nazwa !== nowaNazwa && nowaNazwa != "") {
       prod.forEach((item, index) => {
-        if (e.target.value === index) {
-          console.log("Index: " + index);
-          const produkty = [prod];
-          console.log("Produkty: " + produkty);
-          produkty[e.target.value] = [
-            (produkty[0] = nowaNazwa),
-            item[e.target.value][1],
-            item[e.target.value[2]],
-          ];
-          return setProd((produkty[0] = nowaNazwa));
+        if (Number(e.target.value) === index) {
+          let produkty = [...prod];
+          const c = prod[e.target.value[1]];
+          const k = prod[e.target.value[2]];
+          produkty[index] = [nowaNazwa, c, k];
+          return setProd(produkty);
         }
       });
     }
